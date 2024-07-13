@@ -4,6 +4,7 @@ import com.example.ecommercewebsite.aop.Secured;
 import com.example.ecommercewebsite.enums.RoleEnum;
 import com.example.ecommercewebsite.model.reponse.ProductResponse;
 import com.example.ecommercewebsite.model.reponse.ProductsResponse;
+import com.example.ecommercewebsite.model.request.CreateProductRequest;
 import com.example.ecommercewebsite.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,14 @@ public class ProductController {
     }
 
     @Secured(role = RoleEnum.ADMIN)
-    @GetMapping("/product")
-    public ResponseEntity<ProductResponse> createProduct(@Valid @ModelAttribute Create)
+    @PostMapping(value = "/product")
+    public ResponseEntity<ProductResponse> createProduct(@Valid @ModelAttribute CreateProductRequest request){
+        return ResponseEntity.ok(productService.createProduct(request));
+    }
+
+    @Secured(role = RoleEnum.ADMIN)
+    @PutMapping("/product/{id}")
+    public ResponseEntity<ProductResponse> updateProduct(@PathVariable("id") String id, @Valid @ModelAttribute CreateProductRequest request){
+        return ResponseEntity.ok(productService.updateProduct(id, request));
+    }
 }

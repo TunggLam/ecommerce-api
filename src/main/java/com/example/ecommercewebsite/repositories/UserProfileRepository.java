@@ -19,4 +19,7 @@ public interface UserProfileRepository extends JpaRepository<UserProfile, String
 
     @Query(value = "select * from user_profile order by created_at desc", nativeQuery = true)
     List<UserProfile> findUserProfileOrderByCreatedAtDesc();
+
+    @Query(value = "select address from user_profile where username = :username", nativeQuery = true)
+    String getAddressByUsername(@Param("username") String username);
 }

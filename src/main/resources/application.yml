@@ -54,3 +54,6 @@ redis:
   database: 0
   timeout: 3600
 
+imgur:
+  client-id: 29f585fc0df678c
+  upload-url: https://api.imgur.com/3/image

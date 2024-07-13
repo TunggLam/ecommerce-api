@@ -8,25 +8,18 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Table(name = "product")
 @EqualsAndHashCode(callSuper = false)
-public class Product extends BaseEntity{
+@Table(name = "image")
+public class Image extends BaseEntity{
 
-    private String name;
+    @Column(name = "product_id")
+    private String productId;
 
-    private String description;
+    private String color;
 
-    private BigDecimal price;
-
-    @Column(name = "category_id", nullable = false)
-    private String categoryId;
-
-    @Column(name = "quantity")
-    private Integer quantity;
+    private String url;
 }
